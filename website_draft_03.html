@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Josh Lamb - Joint Specialists Ltd.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Source Sans Pro Font (via Google Fonts for web compatibility) -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #E7ECEF; /* Light Grey/Blue */
+            color: #333333; /* Changed to a darker shade of grey, near black */
+            padding-top: 80px; /* Add padding to the body to prevent content from being hidden by the fixed header */
+        }
+        .text-primary {
+            color: #274C77; /* Dark Blue */
+        }
+        .bg-primary {
+            background-color: #274C77; /* Dark Blue */
+        }
+        .btn-primary {
+            @apply bg-[#274C77] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#6096BA] transition duration-300 ease-in-out;
+        }
+        .card {
+            /* Enhanced shadow for a more premium feel */
+            @apply bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 ease-in-out flex flex-col; /* Added flexbox for alignment */
+        }
+        /* Custom styles for subtle enhancements */
+        .header-fixed {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the header stays on top of other content */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .footer-shadow {
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Style for the active navigation link - now with a stronger background and transition */
+        nav ul li a {
+            transition: all 0.3s ease-in-out; /* Smooth transition for all link property changes */
+        }
+        .active-link {
+            @apply text-white bg-[#6096BA] px-4 py-2 rounded-lg font-extrabold shadow-md; /* Medium Blue background */
+        }
+
+        /* Specific styles for sticky image on mobile */
+        @media (max-width: 767px) {
+            .about-section-content {
+                display: flex;
+                flex-direction: column;
+            }
+            .sticky-image-wrapper {
+                position: sticky;
+                top: 80px; /* Adjust based on header height */
+                z-index: 500; /* Ensure it's above other content but below header */
+                background-color: #E7ECEF; /* Match section background to avoid transparency issues */
+                padding-bottom: 1rem; /* Add some padding below the image */
+            }
+            .sticky-image-wrapper img {
+                width: 80%; /* Reduce image size to 80% */
+                margin-left: auto; /* Center the image */
+                margin-right: auto; /* Center the image */
+                display: block; /* Ensure margin auto works */
+            }
+            .about-text-content {
+                margin-top: 1rem; /* Space between image and text on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-white py-4 header-fixed">
+        <div class="container mx-auto px-4 flex items-center justify-between md:flex-row">
+            <div class="text-2xl font-bold text-primary">
+                Mr Josh Lamb
+            </div>
+            <!-- Hamburger icon for mobile -->
+            <button id="menu-button" class="md:hidden p-2 rounded-md text-[#333333] hover:text-[#274C77] hover:bg-[#E7ECEF] focus:outline-none focus:ring-2 focus:ring-[#274C77]">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Navigation menu - hidden on mobile by default, flex on md and up -->
+            <nav id="main-nav" class="hidden md:block w-full md:w-auto mt-4 md:mt-0">
+                <ul class="flex flex-col items-center space-y-2 md:flex-row md:space-x-6 md:space-y-0">
+                    <li><a href="#home" class="text-[#333333] hover:text-[#274C77] font-medium">Home</a></li>
+                    <li><a href="#services" class="text-[#333333] hover:text-[#274C77] font-medium">Services</a></li>
+                    <li><a href="#about" class="text-[#333333] hover:text-[#274C77] font-medium">About Mr Lamb</a></li>
+                    <li><a href="#testimonials" class="text-[#333333] hover:text-[#274C77] font-medium">Testimonials</a></li>
+                    <li><a href="#live-feedback" class="text-[#333333] hover:text-[#274C77] font-medium">Live Feedback</a></li>
+                    <li><a href="#practice-locations" class="text-[#333333] hover:text-[#274C77] font-medium">Locations</a></li>
+                    <li><a href="#scientific-work" class="text-[#333333] hover:text-[#274C77] font-medium">Scientific Work</a></li>
+                    <li><a href="#social-media" class="text-[#333333] hover:text-[#274C77] font-medium">Social Media</a></li>
+                    <li><a href="#contact" class="text-[#333333] hover:text-[#274C77] font-medium">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-[#274C77] to-[#6096BA] text-white py-20 md:py-32 rounded-b-3xl shadow-xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                Expert Care Restoring Your Quality of Life
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                Mr Josh Lamb provides compassionate, state-of-the-art hip and knee replacement surgery, ensuring a safe and comfortable journey back to active living.
+            </p>
+            <a href="#contact" class="btn-primary inline-block">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 md:py-24" data-section="services">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Hip Replacement Surgery</h3>
+                    <p class="text-[#333333] mb-4">
+                        Specialising in advanced hip replacement techniques, Mr. Lamb offers personalised solutions to alleviate pain and restore function for patients suffering from hip arthritis and other conditions.
+                    </p>
+                    <ul class="list-disc list-inside text-[#333333] mb-6">
+                        <li>Implant selection to reduce risk of major complications</li>
+                        <li>Complex revision surgery</li>
+                        <li>Rapid recovery protocols</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Knee Replacement Surgery</h3>
+                    <p class="text-[#333333] mb-4">
+                        Mr. Lamb employs the latest surgical innovations to address knee pain and mobility issues, helping patients regain an active lifestyle.
+                    </p>
+                    <ul class="list-disc list-inside text-[#333333] mb-6">
+                        <li>Robot assisted knee replacement</li>
+                        <li>Total knee replacement</li>
+                        <li>Knee replacement revision surgery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-[#E7ECEF] py-16 md:py-24" data-section="about">
+        <div class="container mx-auto px-4">
+            <!-- Flex container for image and text -->
+            <div class="about-section-content flex flex-col md:flex-row items-center md:space-x-8">
+                <!-- Image column - sticky on mobile, normal on desktop -->
+                <div class="md:w-1/3 mb-6 md:mb-0 w-full sticky-image-wrapper">
+                    <img
+                        src="https://media.licdn.com/dms/image/v2/D4D03AQF44L7wP2-XPw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1713451938023?e=1757548800&v=beta&t=NXE9krdSAchMcwbNgMRaSMAvy3TfGMmGL064IRks2e4"
+                        alt="Mr. Josh Lamb"
+                        class="rounded-xl shadow-lg w-full h-auto"
+                        onerror="this.onerror=null;this.src='https://placehold.co/300x400/A3CEF1/274C77?text=Image+Not+Found'; console.error('Failed to load LinkedIn image. Using placeholder.');"
+                    >
+                </div>
+                <!-- Text content column - scrolls on mobile -->
+                <div class="md:w-2/3 text-lg text-[#333333] leading-relaxed about-text-content">
+                    <p class="mb-4">
+                        Mr. Josh Lamb is a fellowship trained hip and knee replacement specialist working in the world-famous Wrightington Hospital and the University of Bristol.
+                    </p>
+                    <p class="mb-4">
+                        Josh completed Trauma and Orthopaedic surgery specialist training in Yorkshire and has completed hip and knee arthroplasty fellowships in Waikato (NZ) and Wrightington (UK). This included subspecialist training in primary hip and knee surgery, including robotic and navigated surgery. Fellowship training also included advanced techniques in hip and knee revision surgery. His current clinical practice includes primary hip and knee replacement and revision surgery.
+                    </p>
+                    <p class="mb-4">
+                        He is an expert in the association of implant design and risk of post-operative complications. His academic work helps to inform implant selection for his patients to maximise the chances of a positive outcome after surgery. Mr Lamb is an invited speaker nationally and internationally on the subject and continues his work with the University of Bristol.
+                    </p>
+                    <p>
+                        Mr Lamb's philosophy is centred on patient well-being. He understands that joint pain can significantly impact your life, and he is dedicated to offering personalised treatment plans, clear communication, and a supportive environment from your initial consultation through recovery. He believes in empowering his patients with knowledge and ensuring they feel safe and cared for every step of the way. Your journey to restored mobility and a pain-free life is his priority.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24" data-section="testimonials">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <p class="text-[#333333] italic mb-4">"Mr Lamb put me at ease from the first Meting and this continued all through my treatment....I left Wrightington Hospital a very contented patient.I can only say thank you which seems totally inadequate for what he did for me."</p>
+                    <p class="font-semibold text-primary">- NHS Patient (July 2025)</p>
+                </div>
+                <div class="card text-center">
+                    <p class="text-[#333333] italic mb-4">"I can’t thank Mr Lamb enough and would whole heartedly recommend him ,his department and his hospital to anyone who needed orthopaedic treatment."</p>
+                    <p class="font-semibold text-primary">- NHS Patient (June 2025)</p>
+                </div>
+                <div class="card text-center">
+                    <p class="text-[#333333] italic mb-4">"The surgery went very well. my recovery was great and the knee is functioning very well."</p>
+                    <p class="font-semibold text-primary">- NHS Patient (January 2025)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Feedback Section -->
+    <section id="live-feedback" class="bg-[#274C77] text-white py-16 md:py-24 rounded-t-3xl shadow-xl" data-section="live-feedback">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                We value transparency and continuous improvement. See what our patients are saying about their experience with Mr. Josh Lamb in real-time.
+            </p>
+            <!-- Placeholder for live feedback integration -->
+            <div class="bg-white text-[#333333] p-8 rounded-xl shadow-md max-w-2xl mx-auto">
+                <p class="text-lg font-medium">
+                </p>
+                <p class="text-sm mt-2 text-[#333333]">
+                    <a href="https://www.iwantgreatcare.org/doctors/mr-josh-lamb" target="_blank" class="btn-primary mt-8 inline-block">View All Reviews on I Want Great Care &rarr;</a>
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Practice Locations Section -->
+    <section id="practice-locations" class="py-16 md:py-24 bg-[#E7ECEF]" data-section="practice-locations">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- NHS Practice -->
+                <div class="card">
+                    <div> <!-- Wrapper for content above map -->
+                        <h3 class="text-2xl font-semibold text-primary mb-4">NHS Practice: Wrightington Hospital</h3>
+                        <p class="text-[#333333] mb-4">
+                            Patients seeking NHS care should seek a referral via their GP.
+                        </p>
+                        <p class="text-[#333333] mb-2"><span class="font-semibold">Clinic:</span> Tuesday morning</p>
+                        <p class="text-[#333333] mb-2"><span class="font-semibold">Address:</span> Wrightington, Wigan & Leigh NHS Foundation Trust, Hall Ln, Appley Bridge, Wigan WN6 9EP</p>
+                        <p class="text-[#333333] mb-4">Wrightington, Wigan & Leigh NHS Foundation Trust</p>
+
+                        <h4 class="text-xl font-semibold text-primary mb-2">NHS Contact Details:</h4>
+                        <p class="text-[#333333]">
+                            <span class="font-semibold">Carolanne Carr, Personal Assistant</span><br>
+                            <span class="font-semibold">Tel:</span> <a href="tel:+441257256528" class="text-primary hover:underline">01257 256528</a><br>
+                            <span class="font-semibold">Email:</span> <a href="mailto:Carolanne.Carr@wwl.nhs.uk" class="text-primary hover:underline">Carolanne.Carr@wwl.nhs.uk</a><br>
+                            <span class="font-semibold">Hours:</span> Mon-Friday, 08:00 - 14:00
+                        </p>
+                    </div>
+                    <div class="mt-auto"> <!-- mt-auto pushes this div to the bottom -->
+                        <div class="mb-4 rounded-lg overflow-hidden shadow-md">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d449.6231904724838!2d-2.7111719!3d53.5913896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b0f0d41a02607%3A0xe82cee0c0bc50d2f!2sWrightington%2C+Wigan+%26+Leigh+NHS+Foundation+Trust!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Wrightington,%20Wigan%20%26%20Leigh%20NHS%20Foundation%20Trust,%20Hall%20Ln,%20Appley%20Bridge,%20Wigan%20WN6%209EP" target="_blank" class="text-primary hover:underline font-medium">Get Directions &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Private Practice -->
+                <div class="card">
+                    <div> <!-- Wrapper for content above map -->
+                        <h3 class="text-2xl font-semibold text-primary mb-4">Private Practice: John Charnley Wing</h3>
+                        <p class="text-[#333333] mb-4">
+                            Please get in contact to arrange a consultation.
+                        </p>
+                        <p class="text-[#333333] mb-2"><span class="font-semibold">Clinic:</span> Tuesday afternoon</p>
+                        <p class="text-[#333333] mb-2"><span class="font-semibold">Address:</span> John Charnley Wing, Wrightington Hospital, Hall Ln, Appley Bridge, Wigan WN6 9EP</p>
+                        <p class="text-[#333333] mb-4">Please note this is a private clinic within the hospital.</p>
+
+                        <h4 class="text-xl font-semibold text-primary mb-2">Private Practice Contact Details:</h4>
+                        <p class="text-[#333333]">
+                            <span class="font-semibold">Carolanne Carr, Personal Assistant</span><br>
+                            <span class="font-semibold">Tel:</span> <a href="tel:+447999999999" class="text-primary hover:underline">07999999999</a><br>
+                            <span class="font-semibold">Email:</span> <a href="mailto:enquiries@joint-specialists.com" class="text-primary hover:underline">enquiries@joint-specialists.com</a><br>
+                            <span class="font-semibold">Hours:</span> Mon-Friday, 08:00 - 14:00
+                        </p>
+                    </div>
+                    <div class="mt-auto"> <!-- mt-auto pushes this div to the bottom -->
+                        <div class="mb-4 rounded-lg overflow-hidden shadow-md">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18z!2d-2.7121174!3d53.5896993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b11a9600364ff%3A0xd2b7985842134f57!2sJCW!5e0!3m2!1sen!2suk!4v1678888888888!5m2!1sen!2suk"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <a href="https://www.google.com/maps/place/JCW/@53.5896993,-2.7121174,449m/data=!3m1!1e3!4m6!3m5!1s0x487b11a9600364ff:0xd2b7985842134f57!8m2!3d53.5898299!4d-2.7100532!16s%2Fg%2F11qjjhvdbk?hl=en&entry=ttu&g_ep=EgoyMDI1MDgwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-primary hover:underline font-medium">Get Directions &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scientific Work Section -->
+    <section id="scientific-work" class="py-16 md:py-24 bg-[#E7ECEF]" data-section="scientific-work">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold text-primary mb-8">Scientific Work & Publications</h2>
+            <p class="text-lg text-[#333333] mb-8 max-w-3xl mx-auto">
+                Mr. Lamb is actively involved in orthopaedic research and regularly publishes his work in peer-reviewed journals. As well as influencing practice on a national and international level, His academic contributions inform his clinical practice, ensuring his patients receive care based on the latest evidence.
+            </p>
+            <a href="https://scholar.google.com/citations?user=VioR2Q0AAAAJ&hl=en" target="_blank" class="btn-primary inline-block mb-10">View Google Scholar Profile &rarr;</a>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Removed Most Impactful Publications section -->
+                <!-- Removed Research Interests section -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social-media" class="py-16 md:py-24" data-section="social-media">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-wrap justify-center gap-6">
+                <!-- LinkedIn Profile Link -->
+                <a href="https://www.linkedin.com/in/mrjlamb/" target="_blank" class="flex items-center space-x-2 text-[#274C77] hover:text-[#6096BA] font-medium text-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20.447 20.452h-3.554v-9.403c0-2.162-.413-3.846-2.99-3.846-2.398 0-2.753 1.802-2.753 3.743v9.506h-3.554V7.948h3.554v1.51c.478-.794 1.353-1.93 3.207-1.93 3.42 0 4.042 2.26 4.042 6.586v9.348zM5.531 6.812a2.008 2.008 0 01-2.008-2.008 2.008 2.008 0 012.008-2.008 2.008 2.008 0 012.008 2.008 2.008 2.008 0 01-2.008 2.008zM7.387 20.452H3.833V7.948h3.554v12.504z"></path>
+                    </svg>
+                    <span>LinkedIn</span>
+                </a>
+                <!-- X.com Profile Link -->
+                <a href="https://x.com/lambjn" target="_blank" class="flex items-center space-x-2 text-[#333333] hover:text-[#274C77] font-medium text-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.21-6.874L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.71 6.227L18.244 2.25zm-2.88 17.545h2.244L6.992 4.99H4.538l10.826 14.805z"></path>
+                    </svg>
+                    <span>X.com</span>
+                </a>
+                <!-- Online Reviews Link -->
+                <a href="https://www.iwantgreatcare.org/doctors/mr-josh-lamb" target="_blank" class="flex items-center space-x-2 text-[#6096BA] hover:text-[#274C77] font-medium text-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <span>Online Reviews</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-[#E7ECEF] py-16 md:py-24" data-section="contact">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg text-[#333333] mb-8">
+                Ready to take the first step towards better mobility? Contact us today to schedule a consultation.
+            </p>
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-md">
+                <form action="mailto:enquiries@joint-specialists.com" method="post" enctype="text/plain" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-left text-[#333333] font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-[#333333] rounded-md focus:outline-none focus:ring-2 focus:ring-[#274C77]" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-left text-[#333333] font-medium mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-[#333333] rounded-md focus:outline-none focus:ring-2 focus:ring-[#274C77]" placeholder="your.email@example.com">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-left text-sm font-medium text-[#333333]">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-[#333333] rounded-md shadow-sm focus:ring-primary focus:border-primary" placeholder="Your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#274C77] text-white py-8 footer-shadow">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 Joint Specialists Ltd. All rights reserved.</p>
+            <p class="mt-2">
+                <a href="#" class="hover:underline">Privacy Policy</a> |
+                <a href="#" class="hover:underline">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- LinkedIn Badge Script (placed at the end of body for optimal loading) -->
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('section[id]');
+            const menuButton = document.getElementById('menu-button');
+            const mainNav = document.getElementById('main-nav');
+            const header = document.querySelector('header');
+            // Removed publicationsList as it's no longer needed for static content
+
+            // Function to toggle mobile menu visibility
+            menuButton.addEventListener('click', function() {
+                mainNav.classList.toggle('hidden');
+            });
+
+            function highlightNavLink() {
+                let currentSectionId = '';
+                const scrollY = window.scrollY;
+                const headerHeight = header.offsetHeight;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 10;
+                    const sectionBottom = section.offsetTop + section.offsetHeight - headerHeight - 10;
+
+                    if (scrollY >= sectionTop && scrollY < sectionBottom) {
+                        currentSectionId = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link', 'text-[#333333]', 'hover:text-[#274C77]', 'font-medium');
+                    if (link.getAttribute('href').substring(1) === currentSectionId) {
+                        link.classList.add('active-link');
+                    } else {
+                        link.classList.add('text-[#333333]', 'hover:text-[#274C77]', 'font-medium');
+                    }
+                });
+            }
+
+            // Close menu when a navigation link is clicked (on mobile)
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default anchor jump
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    const headerHeight = header.offsetHeight; // Recalculate header height on each click for robustness
+
+                    // Close mobile menu if open and on a small screen
+                    if (!mainNav.classList.contains('hidden') && window.innerWidth < 768) {
+                        mainNav.classList.add('hidden');
+                    }
+
+                    if (targetSection) {
+                        const scrollToPosition = targetSection.offsetTop - headerHeight;
+                        window.scrollTo({
+                            top: scrollToPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Call on page load and scroll
+            highlightNavLink();
+            window.addEventListener('scroll', highlightNavLink);
+
+            // Re-evaluate menu visibility and highlight on window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 768) {
+                    mainNav.classList.remove('hidden');
+                } else {
+                    mainNav.classList.add('hidden');
+                }
+                highlightNavLink();
+            });
+
+            // Removed fetchPublications() call as the content is no longer dynamic
+        });
+    </script>
+
+</body>
+</html>
